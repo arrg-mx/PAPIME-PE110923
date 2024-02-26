@@ -7,6 +7,7 @@ Repositorio de archivos del proyecto proyecto PAPIME-PE110923
 - [Participantes](#participantes)
 - [Metas](#metas)
 - [Distribuición](#distribucion)
+- [Audiovisual](#audiovisual)
 
 
 
@@ -77,10 +78,74 @@ en teleoperación directa, teleoperación colaborativa, monitoreo en tiempo real
 aplicada a la robótica para el aprendizaje de tareas en la manipulación de objetos, detección de objetos
 basados en visión, navegación autónoma y coordinación entre agentes.
 
-
-
 ## Distribucion
 
+Este repositorio contiene los documentos y archivos generados para cumplir con la metas del primer año con la siguiente distribución:
 
+```text
+ proyecto/
+    ├── images/
+    │   ├── imagen1.png
+    │   ├── imagen2.png
+    │   ├── imagen3.gif
+    │   └── imagen5.svg
+    ├── docs/
+    │   ├── archivo1.md
+    │   ├── archivo2.pdf
+    │   ├── archivo3.txt
+    │   └── archivo2.pdf
+    ├── src/
+    │   ├── include/
+    │   │   ├── lib1.h
+    │   │   └── libcpp.so
+    │   ├── config/
+    │   │   ├── config-file01.yaml
+    │   │   └── config-file02.yaml
+    │   ├── meshes/
+    │   │   ├── visual/
+    │   │   │   ├── mesh-file.stl
+    │   │   │   └── mesh-file.dae
+    │   │   └── collision/
+    │   │       ├── mesh-file.stl
+    │   │       └── mesh-file.dae
+    │   ├── launch/
+    │   │   ├── launch-file1.launch
+    │   │   ├── rviz-file1.rviz
+    │   │   ├── rviz-file2.rviz
+    │   │   └── launch-file3.launch
+    │   ├── msg/
+    │   │   ├── Message-file1.msg
+    │   │   └── Message-file2.msg
+    │   ├── srv/
+    │   │   ├── ServiceMsg-file1.srv
+    │   │   └── ServiceMsg-file2.srv
+    │   ├── action/
+    │   │   ├── ActionMsg-file1.action
+    │   │   └── ActionMsg-file2.action
+    │   ├── urdf/
+    │   │   ├── urdf-file.urdf
+    │   │   └── xacro-file.xacro
+    │   ├── scripts/
+    │   │   ├── pyscript-file.py
+    │   │   └── cpp-programm.cpp
+    │   ├── src/
+    │   │   ├── cpp-programm.cpp
+    │   │   └── pyprogramm-file.py
+    │   ├── Otros-archivos-del-proyecto.txt
+    │   ├── package.xml
+    │   └── CMakeLists.txt
+    ├── .gitignore
+    ├── CMakeLists.txt
+    ├── LICENSE.md
+    ├── Otros-archivos-generales.txt
+    └── README.md
+```
+
+## Audiovisual
+
+El material audivisual generado durante este primer año puede ser consultado en el siguiente enlace:
+
+
+[![Material audiovisual PAPIME PE110923](https://img.www.youtube.com/watch?v=b4aIV54seJA.jpg)]([www.youtube.com/watch?v=b4aIV54seJA](https://www.youtube.com/watch?v=b4aIV54seJA&list=PLfohvSbVbQc-2ZoogZ56HDSaE1vrPjCP8)https://www.youtube.com/watch?v=b4aIV54seJA&list=PLfohvSbVbQc-2ZoogZ56HDSaE1vrPjCP8)
 
 
