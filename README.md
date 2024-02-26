@@ -102,6 +102,5 @@ Este repositorio contiene los documentos y archivos generados para cumplir con l
 El material audivisual generado durante este primer año puede ser consultado en el siguiente enlace:
 
 
-[![Material audiovisual PAPIME PE110923](https://img.www.youtube.com/watch?v=b4aIV54seJA.jpg)]([www.youtube.com/watch?v=b4aIV54seJA](https://www.youtube.com/watch?v=b4aIV54seJA&list=PLfohvSbVbQc-2ZoogZ56HDSaE1vrPjCP8)https://www.youtube.com/watch?v=b4aIV54seJA&list=PLfohvSbVbQc-2ZoogZ56HDSaE1vrPjCP8)
-
+(https://www.youtube.com/watch?v=b4aIV54seJA&list=PLfohvSbVbQc-2ZoogZ56HDSaE1vrPjCP8)
 
