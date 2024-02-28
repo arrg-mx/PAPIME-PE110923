@@ -83,17 +83,22 @@ basados en visión, navegación autónoma y coordinación entre agentes.
 Este repositorio contiene los documentos y archivos generados para cumplir con la metas del primer año con la siguiente distribución:
 
 ```text
- proyecto/
+ PE110923/
     ├── Robotica Serial/
-    │   ├── imagen1.png
-    │   ├── imagen2.png
-    │   ├── imagen3.gif
-    │   └── imagen5.svg
+    │   ├── Documentos/
+    |   |── Programas/
+    │
     ├── Robótica Móvil/
-    │   ├── archivo1.md
-    │   ├── archivo2.pdf
-    │   ├── archivo3.txt
-    │   └── archivo2.pdf
+    │   ├── Documentos/
+    │   ├── Programas/
+    |       ├── Raspuma/
+    |       ├── Turtlebot3/
+    |       ├── ROSX3_PLUS/
+    |
+    ├── Espacio/
+    │   ├── Documentos/
+    │   ├── Archivos/
+    |
     └── README.md
 ```
 
