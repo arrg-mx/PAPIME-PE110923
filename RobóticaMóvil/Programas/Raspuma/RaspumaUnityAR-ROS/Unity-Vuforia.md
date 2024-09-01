@@ -7,8 +7,8 @@ Para el desarrollo de la aplicación con AR, se integró el SDK de [Vuforia](htt
 
 Ambos marcadores fueron añadidos como respectivos GameObject en la escena de Unity para delimitar la interacción. Las imagenes utilizadas como marcadores fueron Codigos QR generados y valorados en el portal de Vuforia para asegurar su reconocimiento.
 
-![UnityProyecto](/Images/Marcadores.png)
-![UnityProyecto](/Images/MarcadoresVuforia.png)
+![UnityProyecto](/RobóticaMóvil/Programas/Raspuma/RaspumaUnityAR-ROS/Images/Marcadores.png)
+![UnityProyecto](/RobóticaMóvil/Programas/Raspuma/RaspumaUnityAR-ROS/Images/MarcadoresVuforia.png)
 
 # Script de Unity para la Gestión de Marcadores 
 
