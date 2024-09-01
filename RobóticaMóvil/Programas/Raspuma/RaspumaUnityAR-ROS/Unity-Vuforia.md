@@ -13,7 +13,7 @@ Ambos marcadores fueron añadidos como respectivos GameObject en la escena de Un
 # Script de Unity para la Gestión de Marcadores 
 
 - Funcionalidad General
-[MarkerCode](/src/Scripts/MarkerManager.cs) Es el script que gestiona la interacción entre la aplicación de realidad aumentada en Unity y Raspuma a través de ROS. Utiliza Vuforia para detectar los marcadores designados.
+[MarkerCode](/RobóticaMóvil/Programas/Raspuma/RaspumaUnityAR-ROS/src/Scripts/MarkerManager.cs) Es el script que gestiona la interacción entre la aplicación de realidad aumentada en Unity y Raspuma a través de ROS. Utiliza Vuforia para detectar los marcadores designados.
 
 ## Funcionamiento 
 
@@ -56,7 +56,6 @@ twist.linear.x = 0.5;
 - Se crea un mensaje Twist que define la velocidad lineal y angular de Raspuma, y se publica a ROS para que el robot físico lo ejecute.
 
 ```C#
-//Verificar si es Z o Y
 twist.angular.z = desiredTwist; 
 ros.Publish("/robot_twist", twist);
 ```
@@ -68,7 +67,6 @@ Métodos de Eventos (OnObserverStatusChanged):
 lineRenderer.enabled = false;
 //Send empty Twist msg
 twist.linear.x = 0;
-//Verificar si es Z o Y
 twist.angular.z = 0;
 ros.Publish("/robot_twist", twist);
 ```
