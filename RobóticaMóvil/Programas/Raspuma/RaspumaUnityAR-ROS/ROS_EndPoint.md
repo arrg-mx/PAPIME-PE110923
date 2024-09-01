@@ -21,7 +21,7 @@ ros2 run ros_tcp_endpoint default_server_endpoint
 
 # Ejecución del Nodo del Robot:
 
-[hardware_node.py](/src/hardware_communication) Este script se ejecuta en Raspuma y controla los motores, servos y sensores ultrasónicos del robot. Recibe comandos de movimiento desde Unity a través de ROS y ajusta la locomoción y orientación de Raspuma en consecuencia. Además, mide distancias a obstáculos y publica estos datos para su uso futuro.
+[hardware_node.py](/RobóticaMóvil/Programas/Raspuma/RaspumaUnityAR-ROS/src/hardware_communication/hardware_communication/hardware_node.py) Este script se ejecuta en Raspuma y controla los motores, servos y sensores ultrasónicos del robot. Recibe comandos de movimiento desde Unity a través de ROS y ajusta la locomoción y orientación de Raspuma en consecuencia. Además, mide distancias a obstáculos y publica estos datos para su uso futuro.
 
 ```bash
 ros2 run hardware_communication hardware_node
