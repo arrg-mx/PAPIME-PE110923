@@ -11,6 +11,12 @@
 
 El objetivo de este proyecto es permitir que los usuarios puedan visualizar en Realidad Aumentada (AR) la ruta de movimiento del robot móvil "Raspuma" hacia un marcador objetivo. A través de la integración de Unity, ROS2, y Vuforia, se logra una interacción fluida entre el mundo físico, y la virtualización de rutas, facilitando el control e identificación de direcciones en tiempo real del robot.
 
+
+
+https://github.com/user-attachments/assets/a9d34b7d-0a32-4492-b07e-bc50d93d8847
+
+
+
 # Descripción
 
 Raspuma es un robot móvil diseñado para experimentar y desarrollar algoritmos de navegación autónoma. Equipado con sensores ultrasónicos, Raspuma es capaz de detectar y evitar obstáculos en su entorno. Este proyecto combina las capacidades de ROS (Robot Operating System) para el control del robot, Unity para la creación de aplicaciones de realidad aumentada (AR) y ambientes virtuales, y Vuforia para el reconocimiento de marcadores físicos.
