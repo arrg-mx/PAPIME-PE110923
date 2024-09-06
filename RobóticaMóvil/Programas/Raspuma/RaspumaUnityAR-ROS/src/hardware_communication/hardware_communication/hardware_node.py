@@ -16,12 +16,13 @@ cd /dev
 sudo chmod og+rwx /dev/gpio*
 """
 #Locomoción
-a1 = 3
-a2 = 5
-apwm = 50
-b1 = 8
-b2 = 10
-bpwm = 50
+a1 = 11#3
+a2 = 13#5
+#Izq
+apwm = 80
+b1 = 16#8
+b2 = 18#10
+bpwm = 80
 #Servos
 s1 = 21 #pitch
 s2 = 19 #yaw
@@ -43,12 +44,12 @@ class HardwareNode(Node):
   GPIO.setmode(GPIO.BOARD)
   GPIO.setup(a1, GPIO.OUT)
   GPIO.setup(a2, GPIO.OUT)
-  ma1 = GPIO.PWM(a1, 50)
-  ma2 = GPIO.PWM(a2, 50)
+  ma1 = GPIO.PWM(a1, 100)
+  ma2 = GPIO.PWM(a2, 100)
   GPIO.setup(b1, GPIO.OUT)
   GPIO.setup(b2, GPIO.OUT)
-  mb1 = GPIO.PWM(b1, 50)
-  mb2 = GPIO.PWM(b2, 50)
+  mb1 = GPIO.PWM(b1, 100)
+  mb2 = GPIO.PWM(b2, 100)
   #Servos
   #yaw
   GPIO.setup(s1, GPIO.OUT)
@@ -81,10 +82,22 @@ class HardwareNode(Node):
     self.ultrasonicPublisher.publish(msg)
 
   def RobotTwistCallback(self, msg):
-    vala = int(( float(msg._linear.y)+float(msg._linear.x))*apwm)
-    valb = int((-float(msg._linear.y)+float(msg._linear.x))*bpwm)
-    vala = clamp(vala, -100, 100)
-    valb = clamp(valb, -100, 100)
+    valt = float(msg._angular.z)
+    valx = float(msg._linear.x)    
+    vala = valx * (apwm/2) - (valt*(apwm/180))
+    valb = valx * (bpwm/2) + (valt*(bpwm/180))
+    print(vala)
+    print(valb)
+    if vala > 100:
+      vala = 100
+    if vala < -100:
+      vala = -100
+
+    if valb > 100:
+      valb = 100
+    if valb < -100:
+      valb = -100
+    
     if vala > 0:
       self.ma1.start(vala)
       self.ma2.stop()
@@ -132,11 +145,13 @@ class HardwareNode(Node):
       TimeElapsed = StopTime - StartTime
       self.uDis[i] = (TimeElapsed * 34300) / 2
 
-def main(args=None):
-  rclpy.init(args=args)
+  def NumToRange(self, num, inMin, inMax, outMin, outMax):
+    return outMin + (float(num - inMin) / float(inMax - inMin) * (outMax - outMin))
+
+def main():
+  rclpy.init()
   hardware_node = HardwareNode()
   rclpy.spin(hardware_node)
-
   # Destroy the node explicitly
   # (optional - otherwise it will be done automatically
   # when the garbage collector destroys the node object)
