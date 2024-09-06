@@ -13,7 +13,8 @@ El objetivo de este proyecto es permitir que los usuarios puedan visualizar en R
 
 
 
-https://github.com/user-attachments/assets/a9d34b7d-0a32-4492-b07e-bc50d93d8847
+https://github.com/user-attachments/assets/54ac9110-2594-4eeb-a201-84a3b3a7e683
+
 
 
 
@@ -71,6 +72,7 @@ ros2 run hardware_communication hardware_node
 
 - Construir y despliegar la aplicación en un dispositivo Android.
 - Utilizar la cámara del dispositivo para reconocer los marcadores y comenzar a controlar a Raspuma en tiempo real.
+- Enlace al archivo compilado [apk](https://drive.google.com/file/d/1W6BE6t_G90uahnnotFbMo-dVjnIMeJyp/view?usp=sharing)
 
 ## Referencias
 
