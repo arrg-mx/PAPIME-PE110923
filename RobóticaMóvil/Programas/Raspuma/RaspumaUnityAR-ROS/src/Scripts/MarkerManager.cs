@@ -9,13 +9,17 @@ public class MarkerManager : MonoBehaviour
     public GameObject markerOrigin;
     public GameObject markerDestination;
     public LineRenderer lineRenderer;
-
+    public GameObject zArrow;
+    public GameObject xArrow;
+    public GameObject xpArrow;
+    public float scaleFactor;
     private ObserverBehaviour originObserver;
     private ObserverBehaviour destinationObserver;
     //ROS
     public ROSConnection ros;
     RosMessageTypes.Geometry.TwistMsg twist = new();
     RosMessageTypes.Geometry.TwistMsg twistCam = new();
+    //RosMessageTypes.Std.Float32MultiArrayMsg us = new();
     void Start()
     {
         originObserver = markerOrigin.GetComponent<ObserverBehaviour>();
@@ -29,10 +33,11 @@ public class MarkerManager : MonoBehaviour
 
         //ROS
         ros = ROSConnection.GetOrCreateInstance();
-        //ROSConnection.GetOrCreateInstance().Subscribe<RosMessageTypes.Std.StringMsg>("/topic2", ColorChange);
+    
         ros.RegisterPublisher<RosMessageTypes.Std.StringMsg>("/topic2");
         ros.RegisterPublisher<RosMessageTypes.Geometry.TwistMsg>("/robot_twist");
         ros.RegisterPublisher<RosMessageTypes.Geometry.TwistMsg>("/robot_camera_twist");
+        ros.Subscribe<RosMessageTypes.Std.Float32MultiArrayMsg>("/robot_us", ArrowScale);
     }
 
     void Update()
@@ -41,11 +46,18 @@ public class MarkerManager : MonoBehaviour
             destinationObserver.TargetStatus.Status == Status.TRACKED)
         {
             UpdateLine();
-            //Verificar si hay que multiplicar por -1
-            float desiredTwist = Vector3.SignedAngle(markerOrigin.transform.forward, markerDestination.transform.position- markerOrigin.transform.position, new Vector3(0,1,0)); 
-            twist.linear.x = 0.5;
-            //Verificar si es Z o Y
-            twist.angular.z = desiredTwist; 
+            Vector3 distanceVector = markerDestination.transform.position - markerOrigin.transform.position;
+            float desiredTwist = -Vector3.SignedAngle(markerOrigin.transform.forward, distanceVector, new Vector3(0,1,0));
+            float desiredLinear = (distanceVector.magnitude - 1.7f);
+            Debug.Log("desiredLinearPrev = " + desiredLinear);
+            desiredLinear = Mathf.Clamp(desiredLinear, 0.0f, 1.0f);
+            if (desiredTwist < 5f && desiredTwist >= 0f) desiredTwist = 0f;
+            if (desiredTwist > -5f && desiredTwist <= 0f) desiredTwist = 0f;
+            twist.linear.x = desiredLinear;
+            twist.angular.z = desiredTwist;
+            Debug.Log("Dist = " + distanceVector.magnitude);
+            Debug.Log("Lin = " + desiredLinear);
+            Debug.Log("Ang = " + desiredTwist);
             ros.Publish("/robot_twist", twist);
         }
         else
@@ -53,10 +65,14 @@ public class MarkerManager : MonoBehaviour
             lineRenderer.enabled = false;
             //Send empty Twist msg
             twist.linear.x = 0;
-            //Verificar si es Z o Y
             twist.angular.z = 0;
             ros.Publish("/robot_twist", twist);
         }
+    }
+    private void OnApplicationQuit()
+    {
+        twist = new();
+        ros.Publish("/robot_twist", twist);
     }
 
     private void OnObserverStatusChanged(ObserverBehaviour behaviour, TargetStatus status)
@@ -70,6 +86,36 @@ public class MarkerManager : MonoBehaviour
         {
             lineRenderer.enabled = false;
         }
+    }
+
+    void ArrowScale(RosMessageTypes.Std.Float32MultiArrayMsg us)
+    {
+
+        if (us.data[0] > 20f)
+        {
+            xpArrow.transform.localScale = new Vector3(20f * scaleFactor, 20f * scaleFactor, 20f * scaleFactor);
+        }
+        else 
+        {
+            xpArrow.transform.localScale = new Vector3(us.data[0] * scaleFactor, us.data[0] * scaleFactor, us.data[0] * scaleFactor);
+        }
+        if (us.data[1] > 20f)
+        {
+            xArrow.transform.localScale = new Vector3(20f * scaleFactor, 20f * scaleFactor, 20f * scaleFactor);
+        }
+        else 
+        {
+            xArrow.transform.localScale = new Vector3(us.data[1] * scaleFactor, us.data[1] * scaleFactor, us.data[1] * scaleFactor);
+        }
+        if (us.data[2] > 20f)
+        {
+            zArrow.transform.localScale = new Vector3(20f * scaleFactor, 20f * scaleFactor, 20f * scaleFactor);
+        }
+        else 
+        {
+            zArrow.transform.localScale = new Vector3(us.data[2] * scaleFactor, us.data[2] * scaleFactor, us.data[2] * scaleFactor);
+        }
+
     }
 
     private void UpdateLine()
